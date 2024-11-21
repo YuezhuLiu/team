@@ -1,0 +1,27 @@
+extends layout 
+
+block main 
+  form(action="/teams" method="post")
+    dl 
+      dt 
+        label(for="teamName") Enter the name for your new team: 
+      dd 
+        input(type="text"
+              id="teamName"
+              name="teamName"
+              placeholder="Team Name"
+              value=teamName)
+
+    dl 
+      dt 
+        label(for="teamActivity") Enter the activity of this team: 
+      dd 
+        input(type="text"
+              id="teamActivity"
+              name="teamActivity"
+              placeholder="Activity"
+              value=teamActivity)
+
+    fieldset.actions 
+      input(type="submit" value="Save")
+      a(href="/teams") Cancel

@@ -1,0 +1,15 @@
+extends layout 
+
+block main 
+  if teamList === undefined || teamList.length === 0
+    p#no_list You don't have any team. Create one here.
+  else 
+    ul#lists 
+      each team in teamList 
+        li
+          a(href=`/teams/${team.name}`)
+            h2= team.name 
+            p= team.activity
+block headerLinks 
+  .actions 
+    a.add(href="/teams/new") New Team

@@ -1,0 +1,48 @@
+extends layout 
+
+block headerLinks 
+  .actions 
+    a.list(href="/teams") All Teams 
+
+block main 
+  section#members 
+    header 
+      h2= team.name 
+      p= team.activity 
+    ul 
+      each member in members 
+        li 
+          h2 #{member.name}
+          p= member.age
+          p= member.sex
+          form.delete(action=`/teams/${team.name}/members/${member.name}/delete` method="post")
+            button Delete
+
+    form(action=`/teams/${team.name}/members/new` method="post")
+      dl 
+        dt 
+          label(for="memberName") Enter the name of new member: 
+        dd 
+          input(type="text"
+                id="memberName"
+                name="memberName"
+                value=memberName)
+      dl 
+        dt 
+          label(for="memberAge") Enter the age of new member: 
+        dd 
+          input(type="text"
+                id="memberAge"
+                name="memberAge"
+                value=memberAge)
+      dl 
+        dt 
+          label(for="memberSex") Choose the sex of new member: 
+        dd 
+          select(name="memberSex" id="memberSex")
+            option(value="" disabled selected) --Please choose an option--
+            option(value="Female") Female 
+            option(value="Male") Male 
+            option(value="Other") Other
+      fieldset.actions 
+        button Add
